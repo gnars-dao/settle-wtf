@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Londrina Solid";
+    src: url("./fonts/LondrinaSolid-Regular.ttf");
+    font-style: normal;
+  };
+
+  @font-face {
+    font-family: "Balsamiq";
+    src: url("./fonts/Balsamiq.ttf");
+    font-style: normal;
+  }
+}
