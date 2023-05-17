@@ -13,19 +13,34 @@ if (!process.env.INFURA_KEY) {
 }
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.18",
+  solidity: {
+    version: "0.8.18",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
   gasReporter: {
+    gasPriceApi: "",
     currency: "USD",
     gasPrice: 64,
   },
+
   networks: {
     sepolia: {
       url: `https://sepolia.infura.io/v3/${process.env.INFURA_KEY}`,
       accounts: [process.env.PRIVATE_KEY],
     },
     mainnet: {
-      url: "https://mainnet.infura.io/v3/08215b982417464da306f103cc93cf50",
+      url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
       accounts: [process.env.PRIVATE_KEY],
+    },
+    hardhat: {
+      forking: {
+        url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+      },
     },
   },
 };

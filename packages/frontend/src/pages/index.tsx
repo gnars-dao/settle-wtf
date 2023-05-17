@@ -61,7 +61,7 @@ const Home: NextPage = () => {
 
       <Preview />
 
-      {/* <Wtf /> */}
+      <Wtf />
     </div>
   );
 };

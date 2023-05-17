@@ -1,23 +1,11 @@
 import { Tab } from "@headlessui/react";
-import { Result } from "ethers/lib/utils";
-import Link from "next/link";
-import { useAccount, useBlockNumber } from "wagmi";
-
-import { AuctionState } from "../pages";
-import AuctionBtn from "./AuctionBtn";
 import Header from "./Header";
-import PendingLil from "./PendingLil";
 
 interface Props {
-  data: unknown;
-  isFetching: boolean;
-  isFetched: boolean;
+  data: string;
 }
 
-const InfoLil = ({ data, isFetching, isFetched }: Props) => {
-  const { data: blockNumber } = useBlockNumber();
-  const { isConnected } = useAccount();
-
+const InfoLil = ({ data }: Props) => {
   return (
     <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
       <Header />
@@ -33,9 +21,9 @@ const InfoLil = ({ data, isFetching, isFetched }: Props) => {
         <Tab.Group as="div" className="flex flex-col-reverse">
           <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
             <Tab.Panel>
-              {data && typeof data === "string" ? (
+              {data ? (
                 <img
-                  src={`data:image/svg+xml;base64,${data || ""}`}
+                  src={`data:image/svg+xml;base64,${data}`}
                   alt={"nouns"}
                   className="h-full w-full object-cover shadow-xl object-center sm:rounded-lg relative"
                 />
