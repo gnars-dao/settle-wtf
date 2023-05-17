@@ -42,8 +42,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
         <div className="flex flex-col justify-center mt-3 md:mt-10 md:px-4 sm:mt-16 sm:px-0 lg:mt-0 my-auto h-full md:max-w-md">
           <div className="md:mt-8 w-full">
             {auctionTimestamp &&
-            auctionTimestamp >
-              +Math.floor(new Date("2012.08.10").getTime() / 1000) ? (
+            auctionTimestamp < +Math.floor(Date.now() / 1000) ? (
               <>
                 <p className="text-[#92FFFF] font-bold mb-1 text-3xl hidden md:block">
                   Up next
