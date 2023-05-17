@@ -63,9 +63,9 @@ const Wtf = () => {
       <section className="w-full text-left mb-20">
         <h2 className="text-4xl mb-4">Settling Auctions</h2>
         <p className="max-w-[90ch] text-lg font-balsamiq mb-8">
-          Ethereum Blocks last 12 seconds, so you need to act FAST. When a Lil
-          Noun appears that you want to mint, you must click “Settle auction”
-          and confirm in your wallet. Both of these steps must occur during the
+          Ethereum Blocks last 12 seconds, so you need to act FAST. When a Gnar
+          appears that you want to mint, you must click “Settle auction” and
+          confirm in your wallet. Both of these steps must occur during the
           current block. Otherwise, your transaction will fail.
         </p>
         <h3 className="text-2xl mb-4 font-balsamiq">Successful Settlement</h3>
