@@ -1,48 +1,38 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import type { Result } from "ethers/lib/utils";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
 
 interface Props {
-  data: Result | undefined;
-  isFetching: boolean;
-  isFetched: boolean;
-  setModalOpen: Dispatch<SetStateAction<boolean>>;
-  setSelectedLil: Dispatch<SetStateAction<Record<string, unknown>>>;
+  data: string | null;
+  isImageLoading: boolean;
 }
 
-export default function MissedLils({
-  data,
-  isFetched,
-  isFetching,
-  setModalOpen,
-  setSelectedLil,
-}: Props) {
-  const imgData = data?.[2];
-
-  const [missedList, setMissedList] = useState([
-    {
-      imgData: "",
-    },
-  ]);
+export default function MissedLils({ data, isImageLoading }: Props) {
+  const [missedList, setMissedList] = useState<string[]>([]);
   useEffect(() => {
     return () => {
-      if (typeof imgData == "string" && imgData.length > 0) {
-        if (missedList.length < 3) {
-          setMissedList((prevArray) => [...prevArray, { imgData }]);
-        }
+      if (!data || isImageLoading) return;
+      if (missedList.length < 3 && data.length > 0) {
+        setMissedList((prevArray) => [...prevArray, data]);
+      }
 
-        if (missedList.length >= 3 && isFetched && !isFetching && typeof imgData == "string") {
-          setMissedList((prevArray) => {
-            prevArray.shift();
-            return [...prevArray, { imgData }];
-          });
-        }
+      if (missedList.length >= 3 && data.length > 0) {
+        setMissedList((prevArray) => {
+          prevArray.shift();
+          return [...prevArray, data];
+        });
       }
     };
-  }, [imgData]);
+  }, [data]);
 
-  if(missedList.length < 2) {
-    return(<></>)
+  if (missedList.length === 0) {
+    return <></>;
   }
 
   return (
@@ -51,13 +41,12 @@ export default function MissedLils({
         <div>
           <h2 className="text-5xl font-bold text-gray-900 mt-6">
             {" "}
-            Click on a Lil to tweet a eulogy
+            Missed Gnars
           </h2>
         </div>
         <div className="flex pb-10 pt-1 w-full">
           <div className="flex flex-nowrap gap-x-3 py-8 ">
             {missedList.map((lil, index) => {
-              if (!lil.imgData) return;
               return (
                 <div
                   key={index}
@@ -67,13 +56,9 @@ export default function MissedLils({
                     <img
                       width={208}
                       height={208}
-                      src={`data:image/svg+xml;base64,${lil.imgData}`}
+                      src={`data:image/svg+xml;base64,${lil}`}
                       className=" object-cover object-center"
                       alt="lil"
-                      onClick={() => {
-                        setSelectedLil(lil);
-                        setModalOpen(true);
-                      }}
                     />
                   </div>
                 </div>

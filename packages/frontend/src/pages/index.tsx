@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { BigNumber } from "ethers";
 
 import Preview from "../components/Preview";
+import MissedLils from "../components/MissedLils";
 
 const Wtf = dynamic(() => import("../components/Wtf"), { ssr: false });
 

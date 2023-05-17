@@ -5,6 +5,7 @@ import { AuctionABI } from "../deployments/gnarsAuction";
 import { useContractRead } from "wagmi";
 import { BigNumber } from "ethers";
 import { useState } from "react";
+import MissedLils from "./MissedLils";
 const InfoLil = dynamic(() => import("../components/InfoLil"), { ssr: false });
 
 type Seed = {
@@ -24,7 +25,7 @@ export default function Preview() {
     head: 0,
     glasses: 0,
   });
-  const [imgData, setImageData] = useState("");
+  const [imgData, setImageData] = useState<null | string>(null);
   const { isSuccess: auctionLoaded, data: auctionData } = useContractRead({
     address: "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
     abi: AuctionABI,
@@ -48,7 +49,7 @@ export default function Preview() {
     },
   });
 
-  const { isSuccess: imagedLoaded } = useContractRead({
+  const { isLoading: isImageLoading } = useContractRead({
     address: "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5",
     abi: GnarsDescriptor,
     functionName: "generateSVGImage",
@@ -73,6 +74,8 @@ export default function Preview() {
             gnarId={gnarId}
           />
         </div>
+
+        <MissedLils data={imgData} isImageLoading={isImageLoading} />
       </div>
     </div>
   );
