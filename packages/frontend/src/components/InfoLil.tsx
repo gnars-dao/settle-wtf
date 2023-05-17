@@ -1,11 +1,16 @@
 import { Tab } from "@headlessui/react";
 import Header from "./Header";
+import AuctionBtn from "./AuctionBtn";
+import Link from "next/link";
+import { BigNumber } from "ethers";
 
 interface Props {
   data: string;
+  auctionTimestamp: number | undefined;
+  gnarId: BigNumber;
 }
 
-const InfoLil = ({ data }: Props) => {
+const InfoLil = ({ data, auctionTimestamp, gnarId }: Props) => {
   return (
     <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
       <Header />
@@ -36,33 +41,27 @@ const InfoLil = ({ data }: Props) => {
         {/* lilNoun info */}
 
         <div className="flex flex-col justify-center mt-3 md:mt-10 md:px-4 sm:mt-16 sm:px-0 lg:mt-0 my-auto h-full md:max-w-md">
-          {/* <div className="md:mt-8 w-full">
-            {data?.[3] === AuctionState.OVER_NOT_SETTLED && (
+          <div className="md:mt-8 w-full">
+            {auctionTimestamp >
+            +Math.floor(new Date("2012.08.10").getTime() / 1000) ? (
               <>
-                <p className="text-[#92FFFF] font-bold mb-6 text-2xl hidden md:block">
-                  Up next on block {blockNumber}{" "}
+                <p className="text-[#92FFFF] font-bold mb-1 text-3xl hidden md:block">
+                  Up next
                 </p>
-                <h1 className="text-5xl md:text-6xl font-bold text-[#F8F8F2] w-full">
-                  Lil Noun{" "}
-                  {data?.[1] && `# ${parseInt(data[1]._hex.toString())}`}
+                <h1 className="text-5xl md:text-6xl font-bold text-[#F8F8F2] w-full mb-3">
+                  Gnar {gnarId.toNumber()}
                 </h1>
-                <div className="mt-3 mb-3">
-                  <h2 className="sr-only">lilNoun information</h2>
-                  <p className="text-5xl text-[#F8F8F2]">Ξ 0.15</p>
-                </div>
-                {isConnected && (
-                  <AuctionBtn data={data} isFetching={isFetching} />
-                )}
+
+                <AuctionBtn />
+
                 <Link
                   href="#wtf"
                   className="text-[#92FFFF] underline font-balsamiq mt-4 inline-block"
                 >
-                  Learn more about settling and bidding on Lil Nouns
+                  Learn more about settling and bidding
                 </Link>
               </>
-            )}
-
-            {data === undefined && (
+            ) : (
               <>
                 <h2 className="text-white text-2xl md:text-3xl mt-1">
                   An auction is currently in progress!
@@ -78,7 +77,7 @@ const InfoLil = ({ data }: Props) => {
                 </p>
               </>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

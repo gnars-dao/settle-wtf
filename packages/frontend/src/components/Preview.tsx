@@ -25,7 +25,7 @@ export default function Preview() {
     glasses: 0,
   });
   const [imgData, setImageData] = useState("");
-  const { isSuccess: auctionLoaded } = useContractRead({
+  const { isSuccess: auctionLoaded, data: auctionData } = useContractRead({
     address: "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
     abi: AuctionABI,
     functionName: "auction",
@@ -60,11 +60,18 @@ export default function Preview() {
     },
   });
 
+  const auctionTimestamp = auctionData?.endTimestamp.toNumber();
+  console.log();
+
   return (
     <div className="mx-auto">
       <div className="bg-[#22212C] min-h-80vh md:min-h-[60vh]">
         <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
-          <InfoLil data={imgData} />
+          <InfoLil
+            data={imgData}
+            auctionTimestamp={auctionTimestamp}
+            gnarId={gnarId}
+          />
         </div>
       </div>
     </div>
