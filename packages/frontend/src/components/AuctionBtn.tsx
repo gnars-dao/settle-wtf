@@ -3,7 +3,13 @@ import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
 
 import LoadingSpinner from "./LoadingSpinner";
 
-const AuctionBtn = ({ data, isFetching }: Props) => {
+const AuctionBtn = ({
+  data,
+  isLoading,
+}: {
+  data: string | null;
+  isLoading: boolean;
+}) => {
   const { isConnected } = useAccount();
   // const { config, error: prepareError } = usePrepareContractWrite({
   //   address: LilNounsOracle.address,
@@ -17,21 +23,20 @@ const AuctionBtn = ({ data, isFetching }: Props) => {
   // const handleButtonClicked = () => {
   //   write?.();
   // };
+  console.log(isLoading);
 
   if (isConnected) {
     return (
       <button
         type="button"
-        disabled={isFetching || !isConnected}
+        disabled={!data || !isConnected || isLoading}
         // onClick={() => handleButtonClicked()}
         className="cursor-pointer rounded-lg border text-center border-transparent bg-[#92FFFF] px-1 py-4 w-full md:max-w-sm text-black shadow-sm hover:bg-[#83e6e6]"
       >
-        {isFetching ? (
+        {isLoading ? (
           <span className="w-full text-3xl text-slate-500">
             Fetching Block...
           </span>
-        ) : data?.[1].mod(10).isZero() ? (
-          <span className="w-full text-3xl">I&apos;m feeling lucky</span>
         ) : (
           <span className="w-full text-3xl">Settle auction</span>
         )}

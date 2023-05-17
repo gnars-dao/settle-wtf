@@ -72,6 +72,7 @@ export default function Preview() {
             data={imgData}
             auctionTimestamp={auctionTimestamp}
             gnarId={gnarId}
+            isLoading={isImageLoading}
           />
         </div>
 

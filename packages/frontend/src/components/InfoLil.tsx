@@ -8,9 +8,10 @@ interface Props {
   data: string | null;
   auctionTimestamp: number | undefined;
   gnarId: BigNumber;
+  isLoading: boolean;
 }
 
-const InfoLil = ({ data, auctionTimestamp, gnarId }: Props) => {
+const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
   return (
     <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
       <Header />
@@ -26,14 +27,12 @@ const InfoLil = ({ data, auctionTimestamp, gnarId }: Props) => {
         <Tab.Group as="div" className="flex flex-col-reverse">
           <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
             <Tab.Panel>
-              {data ? (
+              {data && (
                 <img
                   src={`data:image/svg+xml;base64,${data}`}
                   alt={"nouns"}
                   className="h-full w-full object-cover shadow-xl object-center sm:rounded-lg relative"
                 />
-              ) : (
-                ""
               )}
             </Tab.Panel>
           </Tab.Panels>
@@ -53,7 +52,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId }: Props) => {
                   Gnar {gnarId.toNumber()}
                 </h1>
 
-                <AuctionBtn />
+                <AuctionBtn data={data} isLoading={isLoading} />
 
                 <Link
                   href="#wtf"
@@ -67,15 +66,6 @@ const InfoLil = ({ data, auctionTimestamp, gnarId }: Props) => {
                 <h2 className="text-white text-2xl md:text-3xl mt-1">
                   An auction is currently in progress!
                 </h2>
-                <p className="text-white text-xl md:text-2xl">
-                  Try your hand at bidding on{" "}
-                  <a
-                    className="text-[#92FFFF] hover:underline"
-                    href="https://lilnouns.wtf"
-                  >
-                    lilnouns.wtf
-                  </a>
-                </p>
               </>
             )}
           </div>
