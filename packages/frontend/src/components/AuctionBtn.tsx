@@ -40,8 +40,6 @@ const AuctionBtn = ({
     write,
   } = useContractWrite(config);
 
-  console.log({ writeData, isSuccess });
-
   if (isConnected) {
     return (
       <button
