@@ -66,7 +66,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
               </>
             ) : (
               <>
-                <h2 className="text-white text-3xl md:text-5xl mt-1 mb-3">
+                <h2 className="text-white text-3xl md:text-5xl mt-8 md:mt-0 mb-3">
                   An auction is in progress!
                 </h2>
 
