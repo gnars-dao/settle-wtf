@@ -52,7 +52,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
                   Up next
                 </p>
                 <h1 className="text-5xl md:text-6xl font-bold text-[#F8F8F2] w-full mb-3">
-                  {gnarId && !isLoading && `Gnar ${gnarId.toNumber()}`}
+                  Gnar {gnarId && gnarId.toNumber()}
                 </h1>
 
                 <AuctionBtn data={data} isLoading={isLoading} />

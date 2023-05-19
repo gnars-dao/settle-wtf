@@ -5,9 +5,10 @@ import { AuctionABI } from "../deployments/gnarsAuction";
 import { useContractRead } from "wagmi";
 import { BigNumber } from "ethers";
 import { useState } from "react";
-import MissedLils from "./MissedLils";
 const InfoLil = dynamic(() => import("../components/InfoLil"), { ssr: false });
-
+const MissedLils = dynamic(() => import("../components/MissedLils"), {
+  ssr: false,
+});
 type Seed = {
   background: number;
   body: number;
