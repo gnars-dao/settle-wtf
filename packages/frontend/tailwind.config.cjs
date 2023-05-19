@@ -15,6 +15,10 @@ module.exports = {
           "0%": { transform: "translate(100%, 0)" },
           "100%": { transform: "translate(-106%, 0)" },
         },
+        revInfiniteScroll: {
+          "0%": { transform: "translate(-106%, 0)" },
+          "100%": { transform: "translate(100%, 0)" },
+        },
         wave: {
           "0%": { transform: "rotate(0.0deg)" },
           "10%": { transform: "rotate(14deg)" },
@@ -37,12 +41,17 @@ module.exports = {
         },
       },
       animation: {
-        infiniteScroll: "infiniteScroll 12s ease-in-out infinite",
+        infiniteScroll: "infiniteScroll 8s ease-in-out infinite",
+        "waving-hand": "wave 4s linear infinite",
+        revInfiniteScroll: "revInfiniteScroll 8s ease-in-out infinite",
         "waving-hand": "wave 4s linear infinite",
         scaler: "myAnim 0.1s ease-in-out both",
         scalerRev: "myAnim 0.1s ease-in-out both",
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };

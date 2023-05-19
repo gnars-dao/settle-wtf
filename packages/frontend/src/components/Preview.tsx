@@ -64,19 +64,20 @@ export default function Preview() {
   const auctionTimestamp = auctionData?.endTimestamp.toNumber();
 
   return (
-    <div className="mx-auto">
-      <div className="bg-[#22212C] min-h-80vh md:min-h-[60vh]">
-        <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
-          <InfoLil
-            data={imgData}
-            auctionTimestamp={auctionTimestamp}
-            gnarId={gnarId}
-            isLoading={isImageLoading}
-          />
-        </div>
-
-        <MissedLils data={imgData} isImageLoading={isImageLoading} />
+    <>
+      <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
+        <InfoLil
+          data={imgData}
+          auctionTimestamp={auctionTimestamp}
+          gnarId={gnarId}
+          isLoading={isImageLoading}
+        />
       </div>
-    </div>
+
+      {auctionTimestamp &&
+        auctionTimestamp < +Math.floor(Date.now() / 1000) && (
+          <MissedLils data={imgData} isImageLoading={isImageLoading} />
+        )}
+    </>
   );
 }

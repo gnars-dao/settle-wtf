@@ -49,6 +49,11 @@ const PendingLil = () => {
           </linearGradient>
         </defs>
       </svg>
+      <p className="absolute px-2 text-xl md:text-3xl text-slate-200 bg-red-500 w-full overflow-hidden flex flex-nowrap items-center text-right rounded-b-3xl text-ellipsis h-16 -mt-16">
+        <span className="block animate-revInfiniteScroll w-full">
+          AUCTION IN PROGRESS
+        </span>
+      </p>
     </div>
   );
 };

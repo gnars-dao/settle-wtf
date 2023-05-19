@@ -8,7 +8,7 @@ const Wtf = dynamic(() => import("../components/Wtf"), { ssr: false });
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-white h-full w-full">
+    <div className="h-full w-full">
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -48,7 +48,9 @@ const Home: NextPage = () => {
         {/* <!-- Meta Tags Generated via https://www.opengraph.xyz --> */}
       </Head>
 
-      <Preview />
+      <div className="mx-auto bg-[#22212C] min-h-60vh">
+        <Preview />
+      </div>
 
       <Wtf />
     </div>
