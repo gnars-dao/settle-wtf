@@ -87,7 +87,6 @@ const Header = () => {
                 </div>
                 <nav className="mt-6">
                   <ul className="-my-2 divide-y divide-zinc-100 text-2xl text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                    {/*                     
                     <MobileNavItem href={`/rip/${address}`}>
                       My Memeories
                     </MobileNavItem>
@@ -99,7 +98,7 @@ const Header = () => {
                     </MobileNavItem>
                     <MobileNavItem href="https://discord.gg/YuuvMJ3qD4">
                       Discord
-                    </MobileNavItem> */}
+                    </MobileNavItem>
                   </ul>
                   <div className="block md:hidden mt-3">
                     <ConnectButton showBalance={false} />

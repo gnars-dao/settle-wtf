@@ -1,7 +1,14 @@
 import type { Result } from "ethers/lib/utils";
-import { useAccount, useContractWrite, usePrepareContractWrite } from "wagmi";
+import {
+  useAccount,
+  useBlockNumber,
+  useContractWrite,
+  usePrepareContractWrite,
+} from "wagmi";
 
 import LoadingSpinner from "./LoadingSpinner";
+import { BlockProtect } from "../deployments/blockProtect";
+import { BigNumber, utils } from "ethers";
 
 const AuctionBtn = ({
   data,
@@ -10,27 +17,37 @@ const AuctionBtn = ({
   data: string | null;
   isLoading: boolean;
 }) => {
+  const {
+    data: blockNumber,
+    isError,
+    isLoading: isBlockLoading,
+  } = useBlockNumber();
+
   const { isConnected } = useAccount();
-  // const { config, error: prepareError } = usePrepareContractWrite({
-  //   address: LilNounsOracle.address,
-  //   abi: LilNounsOracle.abi,
-  //   functionName: "settleAuction",
-  //   args: [data?.[0]],
-  // });
+  const { config } = usePrepareContractWrite({
+    address: "0xffd7bD150021B0Be2d06f88223b09B2801d2F7FB",
+    abi: BlockProtect,
+    args: [
+      "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
+      (blockNumber && BigNumber.from(blockNumber)) || BigNumber.from(0),
+    ],
+    functionName: "settleAuction",
+  });
+  const {
+    data: writeData,
+    isLoading: isWriteLoading,
+    isSuccess,
+    write,
+  } = useContractWrite(config);
 
-  // const { write } = useContractWrite(config);
-
-  // const handleButtonClicked = () => {
-  //   write?.();
-  // };
-  console.log(isLoading);
+  console.log({ writeData, isSuccess });
 
   if (isConnected) {
     return (
       <button
         type="button"
         disabled={!data || !isConnected || isLoading}
-        // onClick={() => handleButtonClicked()}
+        onClick={() => write?.()}
         className="cursor-pointer rounded-lg border text-center border-transparent bg-[#92FFFF] px-1 py-4 w-full md:max-w-sm text-black shadow-sm hover:bg-[#83e6e6]"
       >
         {isLoading ? (

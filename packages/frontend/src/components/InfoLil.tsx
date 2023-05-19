@@ -3,6 +3,7 @@ import Header from "./Header";
 import AuctionBtn from "./AuctionBtn";
 import Link from "next/link";
 import { BigNumber } from "ethers";
+import PendingLil from "./PendingLil";
 
 interface Props {
   data: string | null;
@@ -27,12 +28,15 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
         <Tab.Group as="div" className="flex flex-col-reverse">
           <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
             <Tab.Panel>
-              {data && (
+              {auctionTimestamp &&
+              auctionTimestamp < +Math.floor(Date.now() / 1000) ? (
                 <img
                   src={`data:image/svg+xml;base64,${data}`}
                   alt={"nouns"}
                   className="h-full w-full object-cover shadow-xl object-center sm:rounded-lg relative"
                 />
+              ) : (
+                <PendingLil />
               )}
             </Tab.Panel>
           </Tab.Panels>
@@ -48,7 +52,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
                   Up next
                 </p>
                 <h1 className="text-5xl md:text-6xl font-bold text-[#F8F8F2] w-full mb-3">
-                  Gnar {gnarId.toNumber()}
+                  {gnarId && !isLoading && `Gnar ${gnarId.toNumber()}`}
                 </h1>
 
                 <AuctionBtn data={data} isLoading={isLoading} />
@@ -62,9 +66,20 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
               </>
             ) : (
               <>
-                <h2 className="text-white text-2xl md:text-3xl mt-1">
-                  An auction is currently in progress!
+                <h2 className="text-white text-3xl md:text-5xl mt-1 mb-3">
+                  An auction is in progress!
                 </h2>
+
+                <p className="text-gray-200 text-2xl font-semibold">
+                  Vist{" "}
+                  <a
+                    className="text-[#92FFFF] hover:underline"
+                    href="https://www.gnars.wtf/"
+                  >
+                    Gnars.wtf
+                  </a>{" "}
+                  to get in on the action!
+                </p>
               </>
             )}
           </div>

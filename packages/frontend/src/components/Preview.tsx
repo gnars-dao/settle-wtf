@@ -62,7 +62,6 @@ export default function Preview() {
   });
 
   const auctionTimestamp = auctionData?.endTimestamp.toNumber();
-  console.log();
 
   return (
     <div className="mx-auto">

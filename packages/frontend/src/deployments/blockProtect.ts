@@ -17,4 +17,4 @@ export const BlockProtect = [
     stateMutability: "payable",
     type: "function",
   },
-];
+] as const;

@@ -4,21 +4,22 @@ interface Props {
   data: Result | undefined;
 }
 
-const PendingLil = ({ data }: Props) => {
+const PendingLil = () => {
   return (
     <div className="w-full relative">
-      {data === undefined ? (
-        <p className="absolute px-2 text-xl md:text-3xl text-slate-200 bg-red-500 w-full overflow-hidden flex flex-nowrap items-center text-right rounded-t-xl text-ellipsis h-16">
-          <span className="block animate-infiniteScroll w-full">
-            AUCTION IN PROGRESS, AUCTION IN PROGRESS
-          </span>
-        </p>
-      ) : (
-        ""
-      )}
-
+      <p className="absolute px-2 text-xl md:text-3xl text-slate-200 bg-red-500 w-full overflow-hidden flex flex-nowrap items-center text-right rounded-t-xl text-ellipsis h-16">
+        <span className="block animate-infiniteScroll w-full">
+          AUCTION IN PROGRESS
+        </span>
+      </p>
+      )
       <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="400" rx="20" fill="url(#paint0_linear_179_261)" />
+        <rect
+          width="400"
+          height="400"
+          rx="20"
+          fill="url(#paint0_linear_179_261)"
+        />
         <path
           d="M142 193V178H172V163H187V148H142V163H112V133H127V118H202V133H217V163H202V178H187V193H142ZM142 223V208H187V223H142Z"
           fill="black"
