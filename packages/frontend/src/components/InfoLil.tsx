@@ -61,13 +61,14 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
                 
                 */}
 
-                <button
-                  type="button"
-                  onClick={() => router.push("https://www.gnars.wtf/")}
-                  className="cursor-pointer rounded-lg border text-center border-transparent bg-[#92FFFF] px-1 py-4 w-full md:max-w-sm text-black shadow-sm hover:bg-[#83e6e6] text-3xl"
-                >
-                  Go To Gnars
-                </button>
+                <Link href={"https://www.gnars.wtf/"} target="_blank">
+                  <button
+                    type="button"
+                    className="cursor-pointer rounded-lg border text-center border-transparent bg-[#92FFFF] px-1 py-4 w-full md:max-w-sm text-black shadow-sm hover:bg-[#83e6e6] text-3xl"
+                  >
+                    Go To Gnars
+                  </button>
+                </Link>
 
                 <Link
                   href="#wtf"
