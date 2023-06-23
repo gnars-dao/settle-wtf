@@ -55,7 +55,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
                   Gnar {gnarId && gnarId.toNumber()}
                 </h1>
 
-                <AuctionBtn data={data} isLoading={isLoading} />
+                {/* <AuctionBtn data={data} isLoading={isLoading} /> */}
 
                 <Link
                   href="#wtf"
