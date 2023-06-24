@@ -12,11 +12,12 @@ module.exports = {
       },
       keyframes: {
         infiniteScroll: {
-          "0%": { transform: "translate(100%, 0)" },
-          "100%": { transform: "translate(-106%, 0)" },
+          "0%": { transform: "translate(-3%)" },
+
+          "100%": { transform: "translate(calc(100% + 2rem))" },
         },
         revInfiniteScroll: {
-          "0%": { transform: "translate(-106%, 0)" },
+          "0%": { transform: "translate(-103%, 0)" },
           "100%": { transform: "translate(100%, 0)" },
         },
         wave: {
@@ -41,9 +42,9 @@ module.exports = {
         },
       },
       animation: {
-        infiniteScroll: "infiniteScroll 8s ease-in-out infinite",
+        infiniteScroll: "infiniteScroll 6s linear infinite",
         "waving-hand": "wave 4s linear infinite",
-        revInfiniteScroll: "revInfiniteScroll 8s ease-in-out infinite",
+        revInfiniteScroll: "revInfiniteScroll 6s linear infinite",
         "waving-hand": "wave 4s linear infinite",
         scaler: "myAnim 0.1s ease-in-out both",
         scalerRev: "myAnim 0.1s ease-in-out both",

@@ -14,7 +14,7 @@ export const BlockProtect = [
     ],
     name: "settleAuction",
     outputs: [],
-    stateMutability: "payable",
+    stateMutability: "nonpayable",
     type: "function",
   },
 ] as const;
