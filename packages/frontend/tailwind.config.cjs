@@ -18,7 +18,7 @@ module.exports = {
         },
         revInfiniteScroll: {
           "0%": { transform: "translate(-103%, 0)" },
-          "100%": { transform: "translate(100%, 0)" },
+          "100%": { transform: "translate(110%, 0)" },
         },
         wave: {
           "0%": { transform: "rotate(0.0deg)" },

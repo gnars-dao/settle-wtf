@@ -7,11 +7,12 @@ interface Props {
 const PendingLil = () => {
   return (
     <div className="w-full relative">
-      <p className="absolute px-2 text-xl md:text-3xl text-slate-200 bg-red-500 w-full overflow-hidden flex flex-nowrap items-center text-right rounded-t-xl text-ellipsis h-16">
-        <span className="block animate-infiniteScroll w-full">
-          AUCTION IN PROGRESS
-        </span>
-      </p>
+      <div className="absolute px-2 text-xl md:text-3xl text-slate-200 bg-red-500 w-full overflow-hidden flex flex-nowrap items-center text-right rounded-t-xl text-ellipsis h-16">
+        <div className="w-full flex justify-around whitespace-nowrap animate-revInfiniteScroll gap-x-16">
+          <span className="block w-1/2">AUCTION IN PROGRESS</span>
+          <span className="block w-1/2">AUCTION IN PROGRESS</span>
+        </div>
+      </div>
       )
       <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect
@@ -49,11 +50,12 @@ const PendingLil = () => {
           </linearGradient>
         </defs>
       </svg>
-      <p className="absolute px-2 text-xl md:text-3xl text-slate-200 bg-red-500 w-full overflow-hidden flex flex-nowrap items-center text-right rounded-b-3xl text-ellipsis h-16 -mt-16">
-        <span className="block animate-revInfiniteScroll w-full">
-          AUCTION IN PROGRESS
-        </span>
-      </p>
+      <div className="absolute px-2 text-xl md:text-3xl text-slate-200 bg-red-500 w-full overflow-hidden flex flex-nowrap items-center text-right rounded-b-3xl text-ellipsis h-16 -mt-16">
+        <div className="w-full flex justify-around whitespace-nowrap animate-revInfiniteScroll gap-x-16">
+          <span className="block w-1/2">AUCTION IN PROGRESS</span>
+          <span className="block w-1/2">AUCTION IN PROGRESS</span>
+        </div>
+      </div>
     </div>
   );
 };

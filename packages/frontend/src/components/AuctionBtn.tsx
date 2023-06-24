@@ -31,29 +31,13 @@ const AuctionBtn = ({
 
   const { isConnected } = useAccount();
 
-  // const { config } = usePrepareContractWrite({
-  //   address: "0xb83077111cd2CeEadbdf04B916E05530BD1EDEa9",
-  //   abi: BlockProtect,
-  //   functionName: "settleAuction",
-  //   args: [
-  //     "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
-  //     BigNumber.from(blockNumber),
-  //   ],
-  //   enabled: !!blockNumber && !!isBlockNumberSuccess,
-  // });
-  // const {
-  //   data: writeData,
-  //   isLoading: isWriteLoading,
-  //   isSuccess,
-  //   write,
-  // } = useContractWrite(config);
-
   const signer = useSigner();
   const contract = useContract({
     address: "0x595717Efa16D3600a31700880c17Aa3C2077f19d",
     abi: BlockProtect,
     signerOrProvider: signer.data,
   });
+
   async function handleClick() {
     if (!contract || !blockNumber || isBlockLoading || !isBlockNumberSuccess)
       return;
@@ -68,25 +52,21 @@ const AuctionBtn = ({
     return (
       <button
         type="button"
-        onClick={() => {
-          handleClick();
-          // if (!blockNumber) return;
+        onClick={async () => {
+          if (!blockNumber) return;
 
-          // try {
-          //   const config = await prepareWriteContract({
-          //     address: "0xb83077111cd2CeEadbdf04B916E05530BD1EDEa9",
-          //     abi: BlockProtect,
-          //     functionName: "settleAuction",
-          //     args: [
-          //       "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
-          //       BigNumber.from(blockNumber),
-          //     ],
-          //   });
-          //   const data = await writeContract(config);
-          //   console.log(data);
-          // } catch (e) {
-          //   console.log(e);
-          // }
+          try {
+            const config = await prepareWriteContract({
+              address: "0x595717Efa16D3600a31700880c17Aa3C2077f19d",
+              abi: BlockProtect,
+              functionName: "settleAuction",
+              args: [BigNumber.from(blockNumber + 1)],
+            });
+            const data = await writeContract(config);
+            await data.wait;
+          } catch (e) {
+            console.log(e);
+          }
         }}
         className="cursor-pointer rounded-lg border text-center border-transparent bg-[#92FFFF] px-1 py-4 w-full md:max-w-sm text-black shadow-sm hover:bg-[#83e6e6]"
       >
