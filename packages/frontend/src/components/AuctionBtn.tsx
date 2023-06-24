@@ -48,22 +48,22 @@ const AuctionBtn = ({
   //   write,
   // } = useContractWrite(config);
 
-  const provider = useProvider();
   const signer = useSigner();
   const contract = useContract({
-    address: "0x7a7994F815799c705fe26B4DdA82A93d417d0d38",
+    address: "0x595717Efa16D3600a31700880c17Aa3C2077f19d",
     abi: BlockProtect,
     signerOrProvider: signer.data,
   });
-  function handleClick() {
-    // write?.();
-    if (!contract || !blockNumber) return;
-    contract.functions.settleAuction(
-      "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
-      BigNumber.from(blockNumber)
+  async function handleClick() {
+    if (!contract || !blockNumber || isBlockLoading || !isBlockNumberSuccess)
+      return;
+    const result = await contract.functions.settleAuction(
+      BigNumber.from(blockNumber + 1)
     );
+    console.log({ result });
   }
 
+  console.log(blockNumber);
   if (isConnected) {
     return (
       <button

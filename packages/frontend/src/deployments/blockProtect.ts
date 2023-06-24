@@ -1,11 +1,19 @@
 export const BlockProtect = [
   {
-    inputs: [
+    inputs: [],
+    name: "AUCTION_HOUSE",
+    outputs: [
       {
         internalType: "address",
-        name: "_auctionHouseAddress",
+        name: "",
         type: "address",
       },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
       {
         internalType: "uint256",
         name: "expectedBlock",
