@@ -6,13 +6,13 @@ interface ISkateContractV2AuctionHouseV2 {
 }
 
 contract BlockProtect {
-    function settleAuction(
-        address _auctionHouseAddress,
-        uint256 expectedBlock
-    ) external {
+    address public constant AUCTION_HOUSE =
+        0xC28e0d3c00296dD8c5C3F2E9707361920f92a209;
+
+    function settleAuction(uint expectedBlock) external {
         require(block.number <= expectedBlock, "Gnar missed");
 
-        ISkateContractV2AuctionHouseV2(_auctionHouseAddress)
+        ISkateContractV2AuctionHouseV2(AUCTION_HOUSE)
             .settleCurrentAndCreateNewAuction();
     }
 }

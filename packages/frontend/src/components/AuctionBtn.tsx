@@ -51,7 +51,7 @@ const AuctionBtn = ({
   const provider = useProvider();
   const signer = useSigner();
   const contract = useContract({
-    address: "0xb83077111cd2CeEadbdf04B916E05530BD1EDEa9",
+    address: "0x7a7994F815799c705fe26B4DdA82A93d417d0d38",
     abi: BlockProtect,
     signerOrProvider: signer.data,
   });

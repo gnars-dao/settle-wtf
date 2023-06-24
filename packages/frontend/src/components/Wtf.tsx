@@ -20,7 +20,7 @@ const Wtf = () => {
       </section>
       <section className="w-full text-left mb-20">
         <h2 className="text-4xl mb-4">Summary</h2>
-        <p className="max-w-[90ch] text-lg font-balsamiq">
+        <div className="max-w-[90ch] text-lg font-balsamiq">
           <ul className="list-disc px-8">
             <li className="mb-2">
               Gnars are determined by the block that they are minted on.{" "}
@@ -46,7 +46,7 @@ const Wtf = () => {
               You only have seconds!
             </li>
           </ul>
-        </p>
+        </div>
       </section>
 
       {/* <section className="mb-14">
