@@ -1,53 +1,14 @@
-import type { Result } from "ethers/lib/utils";
-import {
-  useAccount,
-  useBlockNumber,
-  useContract,
-  useContractWrite,
-  usePrepareContractWrite,
-  useProvider,
-  useSigner,
-} from "wagmi";
+import { useAccount, useBlockNumber } from "wagmi";
 
-import LoadingSpinner from "./LoadingSpinner";
 import { BlockProtect } from "../deployments/blockProtect";
-import { BigNumber, utils } from "ethers";
+import { BigNumber } from "ethers";
 import { writeContract, prepareWriteContract } from "wagmi/actions";
 
-const AuctionBtn = ({
-  data,
-  isLoading,
-}: {
-  data: string | null;
-  isLoading: boolean;
-}) => {
-  const {
-    data: blockNumber,
-    isError,
-    isFetched,
-    isSuccess: isBlockNumberSuccess,
-    isLoading: isBlockLoading,
-  } = useBlockNumber();
+const AuctionBtn = ({ isLoading }: { isLoading: boolean }) => {
+  const { data: blockNumber } = useBlockNumber();
 
   const { isConnected } = useAccount();
 
-  const signer = useSigner();
-  const contract = useContract({
-    address: "0x595717Efa16D3600a31700880c17Aa3C2077f19d",
-    abi: BlockProtect,
-    signerOrProvider: signer.data,
-  });
-
-  async function handleClick() {
-    if (!contract || !blockNumber || isBlockLoading || !isBlockNumberSuccess)
-      return;
-    const result = await contract.functions.settleAuction(
-      BigNumber.from(blockNumber + 1)
-    );
-    console.log({ result });
-  }
-
-  console.log(blockNumber);
   if (isConnected) {
     return (
       <button
@@ -62,8 +23,7 @@ const AuctionBtn = ({
               functionName: "settleAuction",
               args: [BigNumber.from(blockNumber + 1)],
             });
-            const data = await writeContract(config);
-            await data.wait;
+            await writeContract(config);
           } catch (e) {
             console.log(e);
           }
