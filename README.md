@@ -1,3 +1,3 @@
 # PreviewGnars
 
-current deploy: https://etherscan.io/tx/0x625bac02b9213b52e6fc85e6c1fc294c522edbc5669be4faa4d54e0bd740f24b
+contract uploaded to etherscan here: https://etherscan.io/address/0x595717Efa16D3600a31700880c17Aa3C2077f19d#code
