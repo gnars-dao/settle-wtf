@@ -4,6 +4,7 @@ import AuctionBtn from "./AuctionBtn";
 import Link from "next/link";
 import { BigNumber } from "ethers";
 import PendingLil from "./PendingLil";
+import { useRouter } from "next/router";
 
 interface Props {
   data: string | null;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
+  const router = useRouter();
   return (
     <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
       <Header />
