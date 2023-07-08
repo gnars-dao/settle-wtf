@@ -105,7 +105,7 @@ const Header = () => {
         </Popover>
       </div>
 
-      <div className="hidden md:flex ml-4 w-48">
+      <div className="hidden md:flex ml-4">
         <ConnectButton
           showBalance={false}
           chainStatus={"name"}
