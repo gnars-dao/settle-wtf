@@ -18,7 +18,7 @@ type Seed = {
 };
 
 export default function Preview() {
-  const [gnarId, setGnarId] = useState(BigNumber.from(1));
+  const [gnarId, setGnarId] = useState<null | BigNumber>(null);
   const [seedData, setSeedData] = useState<Seed>({
     background: 0,
     body: 0,
@@ -43,11 +43,12 @@ export default function Preview() {
     abi: GnarsSeeder,
     functionName: "generateSeed",
     watch: true,
-    args: [gnarId, "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5"],
+    args: [gnarId as BigNumber, "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5"],
     overrides: { blockTag: "pending" },
     onSuccess: (data) => {
       setSeedData(data);
     },
+    enabled: !!gnarId,
   });
 
   const { isLoading: isImageLoading } = useContractRead({

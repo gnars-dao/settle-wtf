@@ -2,9 +2,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { Fragment } from "react";
-import { useAccount } from "wagmi";
 
 import Logo from "../images/logo.png";
 
@@ -34,8 +32,6 @@ function MobileNavItem({ href, children }: { href: string; children: string }) {
 }
 
 const Header = () => {
-  const router = useRouter();
-  const { address } = useAccount();
   return (
     <div className="w-full flex justify-start items-start">
       <span className="w-2/5">
@@ -43,10 +39,7 @@ const Header = () => {
           <img src={Logo.src} alt="logo" className="cursor-pointer h-10" />
         </Link>
       </span>
-
-      {/* <div className="hidden md:flex gap-x-6 justify-end md:justify-between items-center w-3/5">
-       */}
-      <div className="w-3/5 flex justify-end items-">
+      <div className="w-3/5 flex justify-end items-end">
         <Popover>
           <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-1 text-2xl font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-700/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
             Menu
@@ -103,14 +96,13 @@ const Header = () => {
             </Transition.Child>
           </Transition.Root>
         </Popover>
-      </div>
-
-      <div className="hidden md:block ml-4">
-        <ConnectButton
-          showBalance={false}
-          chainStatus={"icon"}
-          accountStatus={"address"}
-        />
+        <div className="hidden md:flex ml-4">
+          <ConnectButton
+            showBalance={false}
+            chainStatus={"name"}
+            accountStatus={"full"}
+          />
+        </div>
       </div>
     </div>
   );

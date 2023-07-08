@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 interface Props {
   data: string | null;
   auctionTimestamp: number | undefined;
-  gnarId: BigNumber;
+  gnarId: BigNumber | null;
   isLoading: boolean;
 }
 
