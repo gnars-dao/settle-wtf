@@ -18,7 +18,7 @@ const AuctionBtn = ({ isLoading }: { isLoading: boolean }) => {
 
           try {
             const config = await prepareWriteContract({
-              address: "0x595717Efa16D3600a31700880c17Aa3C2077f19d",
+              address: "0x98fc2F7cAD77B210978D37C548392982cAFfC59f",
               abi: BlockProtect,
               functionName: "settleAuction",
               args: [BigNumber.from(blockNumber + 1)],
