@@ -103,14 +103,13 @@ const Header = () => {
             </Transition.Child>
           </Transition.Root>
         </Popover>
-      </div>
-
-      <div className="hidden md:flex ml-4">
-        <ConnectButton
-          showBalance={false}
-          chainStatus={"name"}
-          accountStatus={"avatar"}
-        />
+        <div className="hidden md:flex ml-4">
+          <ConnectButton
+            showBalance={false}
+            chainStatus={"name"}
+            accountStatus={"full"}
+          />
+        </div>
       </div>
     </div>
   );
