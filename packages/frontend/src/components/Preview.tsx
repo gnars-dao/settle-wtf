@@ -3,7 +3,6 @@ import { GnarsSeeder } from "../deployments/gnarsSeeder";
 import { GnarsDescriptor } from "../deployments/gnarsDescriptor";
 import { AuctionABI } from "../deployments/gnarsAuction";
 import { useContractRead } from "wagmi";
-import { BigNumber } from "ethers";
 import { useState } from "react";
 const InfoLil = dynamic(() => import("../components/InfoLil"), { ssr: false });
 const MissedLils = dynamic(() => import("../components/MissedLils"), {
@@ -31,8 +30,9 @@ export default function Preview() {
     address: "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
     abi: AuctionABI,
     functionName: "auction",
+    // @ts-ignore
     blockTag: "pending",
-    // @ts-expect-error
+    // @ts-ignore
     watch: true,
     cacheOnBlock: true,
     onSuccess: (data) => {
@@ -47,7 +47,7 @@ export default function Preview() {
     functionName: "generateSeed",
     watch: true,
     args: [BigInt(!gnarId), "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5"],
-    // @ts-expect-error
+    // @ts-ignore
     blockTag: "pending",
     onSuccess: (data) => {
       setSeedData(data);
@@ -59,8 +59,9 @@ export default function Preview() {
     address: "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5",
     abi: GnarsDescriptor,
     functionName: "generateSVGImage",
+    // @ts-ignore
     blockTag: "pending",
-    // @ts-expect-error
+    // @ts-ignore
     watch: true,
     args: [seedData],
     onSuccess: (data) => {

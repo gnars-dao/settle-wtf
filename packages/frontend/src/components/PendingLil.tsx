@@ -1,9 +1,3 @@
-import type { Result } from "ethers/lib/utils";
-
-interface Props {
-  data: Result | undefined;
-}
-
 const PendingLil = () => {
   return (
     <div className="w-full relative">
