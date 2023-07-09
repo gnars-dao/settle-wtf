@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 interface Props {
   data: string | null;
   auctionTimestamp: number | undefined;
-  gnarId: BigNumber | null;
+  gnarId: BigInt | null;
   isLoading: boolean;
 }
 
@@ -54,7 +54,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
                   Up next
                 </p>
                 <h1 className="text-5xl md:text-6xl font-bold text-[#F8F8F2] w-full mb-3">
-                  Gnar {gnarId && gnarId.toNumber()}
+                  Gnar {gnarId && gnarId.toString()}
                 </h1>
 
                 <AuctionBtn isLoading={isLoading} />

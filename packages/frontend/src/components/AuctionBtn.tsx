@@ -21,7 +21,7 @@ const AuctionBtn = ({ isLoading }: { isLoading: boolean }) => {
               address: "0x98fc2F7cAD77B210978D37C548392982cAFfC59f",
               abi: BlockProtect,
               functionName: "settleAuction",
-              args: [BigNumber.from(blockNumber + 1)],
+              args: [BigInt(blockNumber) + 1n],
             });
             await writeContract(config);
           } catch (e) {

@@ -18,7 +18,7 @@ type Seed = {
 };
 
 export default function Preview() {
-  const [gnarId, setGnarId] = useState<null | BigNumber>(null);
+  const [gnarId, setGnarId] = useState<null | BigInt>(null);
   const [seedData, setSeedData] = useState<Seed>({
     background: 0,
     body: 0,
@@ -31,10 +31,13 @@ export default function Preview() {
     address: "0xC28e0d3c00296dD8c5C3F2E9707361920f92a209",
     abi: AuctionABI,
     functionName: "auction",
+    blockTag: "pending",
+    // @ts-expect-error
     watch: true,
-    overrides: { blockTag: "pending" },
+    cacheOnBlock: true,
     onSuccess: (data) => {
-      setGnarId(BigNumber.from(parseInt(data.gnarId._hex) + 1));
+      console.log({ data });
+      setGnarId(data[0] + 1n);
     },
   });
 
@@ -43,8 +46,9 @@ export default function Preview() {
     abi: GnarsSeeder,
     functionName: "generateSeed",
     watch: true,
-    args: [gnarId as BigNumber, "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5"],
-    overrides: { blockTag: "pending" },
+    args: [BigInt(!gnarId), "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5"],
+    // @ts-expect-error
+    blockTag: "pending",
     onSuccess: (data) => {
       setSeedData(data);
     },
@@ -55,15 +59,21 @@ export default function Preview() {
     address: "0x0CBcBF0cDBe9842fa53b7C107738714c2a9af1d5",
     abi: GnarsDescriptor,
     functionName: "generateSVGImage",
+    blockTag: "pending",
+    // @ts-expect-error
     watch: true,
     args: [seedData],
-    overrides: { blockTag: "pending" },
     onSuccess: (data) => {
       setImageData(data);
     },
   });
 
-  const auctionTimestamp = auctionData?.endTimestamp.toNumber();
+  function getAuctionTimestamp() {
+    if (!auctionData) return;
+    return parseInt(auctionData[3].toString());
+  }
+
+  const auctionTimestamp = getAuctionTimestamp();
 
   return (
     <>
