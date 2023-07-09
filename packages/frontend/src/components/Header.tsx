@@ -33,13 +33,13 @@ function MobileNavItem({ href, children }: { href: string; children: string }) {
 
 const Header = () => {
   return (
-    <div className="w-full flex justify-start items-start">
+    <div className="w-full flex">
       <span className="w-2/5">
         <Link href="https://lilnouns.wtf" legacyBehavior>
           <img src={Logo.src} alt="logo" className="cursor-pointer h-10" />
         </Link>
       </span>
-      <div className="w-3/5 flex justify-end items-end">
+      <div className="w-3/5 flex justify-end">
         <Popover>
           <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-1 text-2xl font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-700/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
             Menu
@@ -55,7 +55,7 @@ const Header = () => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/80" />
+              <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm dark:bg-black/30" />
             </Transition.Child>
             <Transition.Child
               as={Fragment}

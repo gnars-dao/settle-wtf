@@ -5,6 +5,7 @@ import type { AppType } from "next/dist/shared/lib/utils";
 import "@rainbow-me/rainbowkit/styles.css";
 
 import {
+  darkTheme,
   getDefaultWallets,
   lightTheme,
   RainbowKitProvider,
@@ -42,6 +43,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         modalSize="compact"
         showRecentTransactions={false}
         theme={lightTheme({
+          overlayBlur: "small",
+          borderRadius: "large",
           fontStack: "rounded",
         })}
       >
