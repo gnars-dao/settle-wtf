@@ -14,7 +14,6 @@ interface Props {
 }
 
 const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
-  const router = useRouter();
   return (
     <div className="mx-auto max-w-2xl px-1.5 md:px-4 pt-6 pb-12 lg:max-w-6xl">
       <Header />
@@ -47,26 +46,32 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
 
         <div className="flex flex-col justify-center mt-3 md:mt-10 md:px-4 sm:mt-16 sm:px-0 lg:mt-0 my-auto h-full md:max-w-md">
           <div className="md:mt-8 w-full">
-            {auctionTimestamp &&
+            {/* {auctionTimestamp &&
             auctionTimestamp < +Math.floor(Date.now() / 1000) ? (
-              <>
-                <p className="text-[#92FFFF] font-bold mb-1 text-3xl hidden md:block">
-                  Up next
-                </p>
-                <h1 className="text-5xl md:text-6xl font-bold text-[#F8F8F2] w-full mb-3">
-                  Gnar {gnarId && gnarId.toNumber()}
-                </h1>
+              */}
+            <>
+              <p className="text-[#92FFFF] font-bold mb-1 text-3xl hidden md:block">
+                Up next
+              </p>
+              <h1 className="text-5xl md:text-6xl font-bold text-[#F8F8F2] w-full mb-3">
+                Gnar {gnarId && gnarId.toNumber()}
+              </h1>
 
-                <AuctionBtn isLoading={isLoading} />
+              <AuctionBtn isLoading={isLoading} />
 
-                <Link
-                  href="#wtf"
-                  className="text-[#92FFFF] underline font-balsamiq mt-4 inline-block"
-                >
-                  Learn more about settling and bidding
-                </Link>
-              </>
-            ) : (
+              <span className="text-sm text-rose-400 block max-w-[50ch] mt-4">
+                If your settlement doesn't make the block, you will recieve the
+                following Gnar
+              </span>
+
+              <Link
+                href="#wtf"
+                className="text-[#92FFFF] underline font-balsamiq mt-4 inline-block"
+              >
+                Learn more about settling and bidding
+              </Link>
+            </>
+            {/* ) : (
               <>
                 <h2 className="text-white text-3xl md:text-5xl mt-8 md:mt-0 mb-3">
                   An auction is in progress!
@@ -83,7 +88,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
                   to get in on the action!
                 </p>
               </>
-            )}
+            )} */}
           </div>
         </div>
       </div>

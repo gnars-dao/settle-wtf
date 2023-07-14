@@ -73,12 +73,7 @@ const Wtf = () => {
           Congratulations! But you’re not done yet! Your Gnar is now up for
           auction on the Gnars website. Place your bid and good luck!
         </p>
-        <h3 className="text-2xl mb-4 font-balsamiq">Failed Settlement</h3>
-        <p className="max-w-[90ch] text-lg font-balsamiq mb-20">
-          If you have a failed transaction, your transaction didn’t make it onto
-          the current block, and no auction was started. This can be
-          frustrating, but keep trying!
-        </p>
+
         <h2 className="text-4xl mb-4 mt-8">The Team</h2>
         <ul className="list-disc px-8 text-lg font-balsamiq mb-16">
           <li className="mb-2">
