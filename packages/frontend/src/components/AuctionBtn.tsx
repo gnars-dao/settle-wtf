@@ -1,7 +1,6 @@
-import { useAccount, useBlockNumber, usePrepareContractWrite } from "wagmi";
+import { useAccount, usePrepareContractWrite } from "wagmi";
 
 import { AuctionABI } from "../deployments/gnarsAuction";
-import { BigNumber } from "ethers";
 import { useContractWrite } from "wagmi";
 
 const AuctionBtn = ({ isLoading }: { isLoading: boolean }) => {
