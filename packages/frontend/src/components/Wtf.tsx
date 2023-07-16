@@ -32,10 +32,6 @@ const Wtf = () => {
             <li className="mb-2">
               The block where “settlement” occurs determines the next Gnar.
             </li>
-            <li className="mb-2">
-              Settling the auction allows you to mint the shown Gnar as the next
-              auction.{" "}
-            </li>
 
             <li className="mb-2">
               Settlement and wallet confirmation have to happen all within the
@@ -66,7 +62,7 @@ const Wtf = () => {
           Ethereum Blocks last 12 seconds, so you need to act FAST. When a Gnar
           appears that you want to mint, you must click “Settle auction” and
           confirm in your wallet. Both of these steps must occur during the
-          current block. Otherwise, your transaction will fail.
+          current block. Otherwise, you will recieve the Gnar from the block the transaction is included in.
         </p>
         <h3 className="text-2xl mb-4 font-balsamiq">Successful Settlement</h3>
         <p className="max-w-[90ch] text-lg font-balsamiq mb-8">

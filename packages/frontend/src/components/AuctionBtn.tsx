@@ -1,7 +1,7 @@
 import { useAccount, usePrepareContractWrite } from "wagmi";
 
-import { AuctionABI } from "../deployments/gnarsAuction";
 import { useContractWrite } from "wagmi";
+import { AuctionABI } from "../deployments/gnarsAuction";
 
 const AuctionBtn = ({ isLoading }: { isLoading: boolean }) => {
   const { isConnected } = useAccount();
