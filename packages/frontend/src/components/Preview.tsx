@@ -38,7 +38,7 @@ export default function Preview() {
     },
   });
 
-  const { isSuccess: seedLoaded } = useContractRead({
+  useContractRead({
     address: "0xb69d980feb3c2ee143ca14feb870fe09f8dfa1fc",
     abi: GnarsSeeder,
     functionName: "generateSeed",

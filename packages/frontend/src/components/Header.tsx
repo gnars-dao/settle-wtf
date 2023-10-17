@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <div className="w-full flex justify-start items-start">
       <span className="w-2/5">
-        <Link href="https://lilnouns.wtf" legacyBehavior>
+        <Link href="https://gnars.wtf" legacyBehavior>
           <img src={Logo.src} alt="logo" className="cursor-pointer h-10" />
         </Link>
       </span>
