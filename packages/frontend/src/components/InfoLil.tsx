@@ -19,7 +19,7 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
       <Header />
       <div className="flex flex-wrap items-start pt-8 ">
         <h1 className="text-5xl font-bold mb-2 text-[#F8F8F2] w-full">
-          Preview Gnars
+          Settle
         </h1>
         <p className="font-bold text-[#92FFFF] text-3xl mb-6 hidden md:block">
           Preview the next Gnar before the auction
@@ -56,9 +56,9 @@ const InfoLil = ({ data, auctionTimestamp, gnarId, isLoading }: Props) => {
                   Gnar {gnarId && gnarId.toNumber()}
                 </h1>
 
-                <AuctionBtn isLoading={isLoading} />
+                <AuctionBtn isLoading={isLoading} gnarId={gnarId?.toNumber()} />
 
-                <span className="text-sm text-rose-400 block max-w-[50ch] mt-4">
+                <span className=" text-red-500 block max-w-[50ch] mt-4">
                   If your settlement doesn't make the block, you will recieve
                   the following Gnar
                 </span>

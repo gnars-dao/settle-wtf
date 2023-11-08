@@ -3,7 +3,13 @@ import { useAccount, usePrepareContractWrite } from "wagmi";
 import { useContractWrite } from "wagmi";
 import { AuctionABI } from "../deployments/gnarsAuction";
 
-const AuctionBtn = ({ isLoading }: { isLoading: boolean }) => {
+const AuctionBtn = ({
+  isLoading,
+  gnarId,
+}: {
+  isLoading: boolean;
+  gnarId: number | undefined;
+}) => {
   const { isConnected } = useAccount();
 
   const { config } = usePrepareContractWrite({
@@ -14,27 +20,34 @@ const AuctionBtn = ({ isLoading }: { isLoading: boolean }) => {
   const { write } = useContractWrite(config);
   if (isConnected) {
     return (
-      <button
-        type="button"
-        onClick={async () => {
-          if (!write) return;
+      <>
+        <span className="text-red-500 mb-4 block">
+          {gnarId && gnarId % 10 === 7
+            ? " To pay homage and show our respect as a Nouns extension, every Gnar ending in 7 is reserved for onboarding shredders."
+            : ""}
+        </span>
+        <button
+          type="button"
+          onClick={async () => {
+            if (!write) return;
 
-          try {
-            write();
-          } catch (e) {
-            console.log(e);
-          }
-        }}
-        className="cursor-pointer rounded-lg border text-center border-transparent bg-[#92FFFF] px-1 py-4 w-full md:max-w-sm text-black shadow-sm hover:bg-[#83e6e6]"
-      >
-        {isLoading ? (
-          <span className="w-full text-3xl text-slate-500">
-            Fetching Block...
-          </span>
-        ) : (
-          <span className="w-full text-3xl">Settle auction</span>
-        )}
-      </button>
+            try {
+              write();
+            } catch (e) {
+              console.log(e);
+            }
+          }}
+          className="cursor-pointer rounded-lg border text-center border-transparent bg-[#92FFFF] px-1 py-4 w-full md:max-w-sm text-black shadow-sm hover:bg-[#83e6e6]"
+        >
+          {isLoading ? (
+            <span className="w-full text-3xl text-slate-500">
+              Fetching Block...
+            </span>
+          ) : (
+            <span className="w-full text-3xl">Settle auction</span>
+          )}
+        </button>
+      </>
     );
   }
 
